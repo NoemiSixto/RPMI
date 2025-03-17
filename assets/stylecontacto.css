@@ -140,7 +140,7 @@ body{
     left: 0px;
     background-color: #ffffff;
     display: grid;
-    transform: translateX(100vw);
+    transform: translateX(-100vw);
     z-index: 1;
 
 }
