@@ -1,0 +1,1152 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: "karantina";
+    src: url(font/Karantina-Regular.ttf);
+}
+
+@font-face {
+    font-family: "roboto";
+    src: url(font/Roboto-Regular.ttf);
+}
+
+body{
+    background-color: #19191b;
+}
+
+.header{
+    width: 1440px;
+    height: 100px;
+    display: block;
+    background-color: #000000;
+
+}
+
+.logo-header{
+    width: 80px;
+    position: absolute;
+    right: 680px;
+    left: 680px;
+    top: 10px;
+
+}
+
+.animation{
+    position: absolute;
+    left: 540px;
+    top: 42px;
+
+}
+
+.horror-fest{
+    position: absolute;
+    left: 780px;
+    top: 42px;
+
+}
+
+.linea-divisoria-1-white{
+    height: 2px;
+    position: absolute;
+    top: 100px;
+
+}
+
+.nav{
+    height: 100px;
+    display: grid;
+
+}
+
+.nav span{
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: roboto;
+
+}
+
+.nav span{
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: roboto;
+
+}
+
+.menu{
+    height: 60px;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: 300ms ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+
+
+}
+
+.bar{
+    height: 6px;
+    width: 50px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: 200ms ease-in-out;
+
+}
+
+.menu.active .bar:nth-last-child(1){
+    transform: translateY(-11px) rotate(-45deg);
+
+}
+
+.menu.active .bar:nth-last-child(2){
+    opacity: 0;
+
+}
+
+.menu.active .bar:nth-last-child(3){
+    transform: translateY(11px) rotate(45deg);
+
+}
+
+.menu-desplegable{
+    height: 323px;
+    width: 275px;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    background-color: #ffffff;
+    display: grid;
+    transform: translateX(100vw);
+    z-index: 1;
+
+}
+
+.click{
+    transform: translateX(0vw);
+
+}
+
+.boton-menu-inicio{
+    height: 72px;
+    width: 245px;
+    padding: 15px;
+    background: #ffffff;
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+
+}
+
+.boton-menu-inicio{
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-inicio:hover{
+    background-color: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-inicio:active{
+    background-color: #b7b7b7;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-sesiones{
+    height: 72px;
+    width: 245px;
+    padding: 15px;
+    background: #ffffff;
+    border: none;
+    position: absolute;
+    top: 87px;
+    left: 15px;
+
+}
+
+.boton-menu-sesiones{
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-sesiones:active{
+    background-color: #b7b7b7;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+.boton-menu-sesiones:hover{
+    background-color: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-festival{
+    height: 72px;
+    width: 245px;
+    padding: 15px;
+    background: #ffffff;
+    border: none;
+    position: absolute;
+    top: 164px;
+    left: 15px;
+
+}
+
+.boton-menu-festival{
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-festival:active{
+    background-color: #b7b7b7;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-festival:hover{
+    background-color: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-contacto{
+    height: 72px;
+    width: 245px;
+    padding: 15px;
+    background: #ffffff;
+    border: none;
+    position: absolute;
+    top: 241px;
+    left: 15px;
+
+}
+
+.boton-menu-contacto{
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-contacto:active{
+    background-color: #b7b7b7;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.boton-menu-contacto:hover{
+    background-color: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+
+.ahf{
+    position: absolute;
+    top: 130px;
+    left: 83.5px;
+
+}
+
+.primera-linea{
+    position: absolute;
+    top: 511px;
+    left: 470px;
+    height: 2.5px;
+    width: 500px;
+
+}
+
+.linea-divisoria1{
+    position: absolute;
+    top: 888px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria2{
+    position: absolute;
+    top: 1265px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria3{
+    position: absolute;
+    top: 1642px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria4{
+    position: absolute;
+    top: 2019px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria5{
+    position: absolute;
+    top: 2396px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria6{
+    position: absolute;
+    top: 2773px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria7{
+    position: absolute;
+    top: 3150px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-divisoria8{
+    position: absolute;
+    top: 3527px;
+    left: 316px;
+    height: 2.5px;
+    width: 808px;
+
+}
+
+.linea-final1{
+    position: absolute;
+    top: 3904px;
+    left: 470px;
+    height: 2.5px;
+    width: 500px;
+
+}
+
+.linea-final2{
+    position: absolute;
+    top: 3921px;
+    left: 595px;
+    height: 2.5px;
+    width: 250px;
+
+}
+
+.lineas-verticales{
+    height: 3311px;
+    width: 1315px;
+    position: absolute;
+    top: 553px;
+    left: 62.5px;
+
+}
+
+.linea-vertical1{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    left: 0px;
+
+}
+
+.linea-vertical2{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 377px;
+    right: 0px;
+
+}
+
+.linea-vertical3{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 754px;
+    left: 0px;
+
+}
+
+.linea-vertical4{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 1131px;
+    right: 0px;
+
+}
+
+.linea-vertical5{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 1508px;
+    left: 0px;
+
+}
+
+.linea-vertical6{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 1885px;
+    right: 0px;
+
+}
+
+.linea-vertical7{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 2262px;
+    left: 0px;
+
+}
+
+.linea-vertical8{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 2639px;
+    right: 0px;
+
+}
+
+.linea-vertical9{
+    width: 10px;
+    height: 295px;
+    position: absolute;
+    top: 3016px;
+    left: 0px;
+
+}
+
+.peliculas-texto-derecha{
+    height: 3311px;
+    width: 732px;
+    position: absolute;
+    top: 545px;
+    left: 646.5px;
+
+}
+
+.pelicula1 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula1 h1{
+    position: absolute;
+    top: 19px;
+
+}
+
+.pelicula1 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula1 h2{
+    position: absolute;
+    top: 78px;
+
+}
+
+.pelicula1 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula1 h3{
+    position: absolute;
+    top: 124px;
+
+}
+
+.pelicula3 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula3 h1{
+    position: absolute;
+    top: 773px;
+
+}
+
+.pelicula3 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula3 h2{
+    position: absolute;
+    top: 832px;
+
+}
+
+.pelicula3 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula3 h3{
+    position: absolute;
+    top: 878px;
+
+}
+
+.pelicula5 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula5 h1{
+    position: absolute;
+    top: 1526px;
+
+}
+
+.pelicula5 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula5 h2{
+    position: absolute;
+    top: 1585px;
+
+}
+
+.pelicula5 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula5 h3{
+    position: absolute;
+    top: 1631px;
+
+}
+
+.pelicula7 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula7 h1{
+    position: absolute;
+    top: 2280.5px;
+
+}
+
+.pelicula7 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula7 h2{
+    position: absolute;
+    top: 2339.5px;
+
+}
+
+.pelicula7 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula7 h3{
+    position: absolute;
+    top: 2385.5px;
+
+}
+
+.pelicula9 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula9 h1{
+    position: absolute;
+    top: 3035px;
+
+}
+
+.pelicula9 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula9 h2{
+    position: absolute;
+    top: 3094px;
+
+}
+
+.pelicula9 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula9 h3{
+    position: absolute;
+    top: 3140px;
+
+}
+
+.peliculas-texto-izquierda{
+    height: 3311px;
+    width: 732px;
+    position: absolute;
+    top: 545px;
+    left: 62.5px;
+
+}
+
+.pelicula2 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula2 h1{
+    position: absolute;
+    top: 394.5px;
+
+}
+
+.pelicula2 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula2 h2{
+    position: absolute;
+    top: 453.5px;
+
+}
+
+.pelicula2 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula2 h3{
+    position: absolute;
+    top: 499.5px;
+
+}
+
+.pelicula4 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula4 h1{
+    position: absolute;
+    top: 1150px;
+
+}
+
+.pelicula4 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula4 h2{
+    position: absolute;
+    top: 1209px;
+
+}
+
+.pelicula4 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula4 h3{
+    position: absolute;
+    top: 1255px;
+
+}
+
+.pelicula6 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula6 h1{
+    position: absolute;
+    top: 1904px;
+
+}
+
+.pelicula6 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula6 h2{
+    position: absolute;
+    top: 1963px;
+
+}
+
+.pelicula6 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula6 h3{
+    position: absolute;
+    top: 2009px;
+
+}
+
+.pelicula8 h1{
+    color: #767676;
+    text-align: justify;
+    font-family: karantina;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.pelicula8 h1{
+    position: absolute;
+    top: 2657px;
+
+}
+
+.pelicula8 h2{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula8 h2{
+    position: absolute;
+    top: 2716px;
+
+}
+
+.pelicula8 h3{
+    color: #767676;
+    text-align: justify;
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+
+}
+
+.pelicula8 h3{
+    position: absolute;
+    top: 2762px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.imagen-peliculas{
+    height: 3311px;
+    width: 1315px;
+    position: absolute;
+    top: 553px;
+    left: 62.5px;
+
+}
+
+.festival-pelicula1{
+    position: absolute;
+    left: 10px;
+
+}
+
+.festival-pelicula2{
+    position: absolute;
+    top: 377px;
+    right: 10px;
+
+}
+
+.festival-pelicula3{
+    position: absolute;
+    top: 754px;
+    left: 10px;
+
+}
+
+.festival-pelicula4{
+    position: absolute;
+    top: 1131px;
+    right: 10px;
+
+}
+
+.festival-pelicula5{
+    position: absolute;
+    top: 1508px;
+    left: 10px;
+
+}
+
+.festival-pelicula6{
+    position: absolute;
+    top: 1885px;
+    right: 10px;
+
+}
+
+.festival-pelicula7{
+    position: absolute;
+    top: 2262px;
+    left: 10px;
+
+}
+
+.festival-pelicula8{
+    position: absolute;
+    top: 2639px;
+    right: 10px;
+
+}
+
+.festival-pelicula9{
+    position: absolute;
+    top: 3016px;
+    left: 10px;
+
+}
+
+.boton-horarios-sesiones{
+    height: 57px;
+    width: 210px;
+    position: absolute;
+    top: 3983px;
+    left: 615px;
+
+}
+.boton-horarios-sesiones{
+    background-color: #da460b;
+    border: none;
+    border-radius: 5px;
+    color: #19191b;
+    text-align: center;
+    font-family: karantina;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.boton-horarios-sesiones:hover{
+    background-color: #a75535;
+    border: none;
+    border-radius: 5px;
+    color: #35353a;
+    text-align: center;
+    font-family: karantina;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.boton-horarios-sesiones:active{
+    background-color: #99330b;
+    border: none;
+    border-radius: 5px;
+    color: #35353a;
+    text-align: center;
+    font-family: karantina;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+
+
+
+
+
+
+
+
+.footer{
+    width: 1440px;
+    height: 173px;
+    display: block;
+    background-color: #000000;
+
+}
+
+.footer{
+    position: absolute;
+    top: 4117px;
+
+}
+
+.logo-footer{
+    width: 120px;
+    position: absolute;
+    left: 28px;
+    top: 26px;
+
+}
+
+.texto-legal{
+    position: absolute;
+
+}
+
+.linea-divisoria-2-white{
+    position: absolute;
+    top: -2px;
+
+}
+
+
+
