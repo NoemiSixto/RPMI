@@ -43,9 +43,7 @@
                     </a>
                 </li>
                 <li class="link4">
-                    <a href="contacto.html">
-                        <input class="boton-menu-contacto" type="submit" value="Contacto">
-                    </a>
+                    <input class="boton-menu-contacto" type="submit" value="Contacto">
                 </li>
             </ul>
         </div>
@@ -141,5 +139,11 @@
         </div>
     </div>
     <script src="assets/js/scriptindex.js"></script>
+    <script>
+        $(".boton-menu-contacto").on("click", function(){
+            console.log("msg:iniciar=");
+            alert("se manda mensaje");
+        });
+    </script>
 </body>
 </html>
