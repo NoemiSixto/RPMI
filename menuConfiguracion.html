@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuracion</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-family: roboto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* FONDO */
+        .menu_config{
+            width: 36.5vw;
+            height: 78.7vh;
+            background-color: rgb(90, 169, 169);
+            border-radius: 7.87vh;
+            justify-items: center;
+            position: relative;
+            top: 50vh;
+            transform: translateY(-50%);
+        }
+
+        /* TEXTO OPCIONES SUPERIOR */
+        #texto_opciones{
+            width: 18.25vw;
+            font-size: 1.275vw;
+            font-weight: bold;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 2.36vh;
+            background-color: aliceblue;
+            text-align: center;
+            padding: 1.97vh 0;
+            position: absolute;
+            left: 18.25vw;
+            transform: translate(-50%, -40%);
+            user-select: none;
+        }
+
+        /* MENÚ DE OPCIONES */
+        .opciones{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            gap: 2.95vh;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            height: 57.5vh;
+            position: absolute;
+            top: 6.3vh;
+            left: 50%;
+            transform: translate(-50%, 7.5%);
+        }
+
+        #op_interior{
+            display: flex;
+            flex-direction: row;
+            width: 29.2vw;
+            height: auto;
+            color: aliceblue;
+            font-size: 1.1vw;
+            font-weight: bold;
+            padding: 0 1.45vw;
+            align-items: center;
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 2.36vh;
+            box-sizing: border-box;
+            background-color: rgb(41, 168, 168);
+        }
+
+        #t_op{
+            width: 8.2125vw;
+            position: relative;
+            left: 0;
+        }
+
+        /* CALIDAD */
+        #calidad_botones{
+            gap: 1.1vw;
+            position: absolute;
+            right: 1.825vw;
+        }
+
+        #fps_ops{
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            right: 1.825vw;
+        }
+
+        #prueba{
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            right: 1.825vw;
+        }
+
+        /* BOTONES */
+        #op_interior button{
+            width: 3.65vw;
+            font-size: 0.75vw;
+            font-weight: bold;
+            padding: 0.79vh 0;
+            border: none;
+            border-radius: 0.365vw;
+            background-color: rgb(14, 114, 114);
+            color: aliceblue;
+            cursor: pointer;
+        }
+
+        #op_interior button:hover{
+            color: rgb(227, 233, 237);
+            background-color: rgb(17, 150, 150);
+        }
+
+        #op_interior button:active{
+            color: rgb(169, 173, 176);
+            background-color: rgb(12, 90, 90);
+        }
+
+        #op_interior button.active{
+            color: rgb(169, 173, 176);
+            background-color: rgb(12, 90, 90);
+        }
+
+        /* SLIDERS */
+        #fps, #sonido, #camara, #zoom, #rotacion{
+            appearance: none;
+            height: 0.365vw;
+            background: rgb(14, 114, 114);
+            border-radius: 0.365vw;
+            cursor: pointer;
+        }
+
+        #fps{
+            width: 7.3vw;
+            transform: translateY(125%);
+        }
+
+        #sonido{
+            width: 15.35vw;
+            transform: translateY(125%);
+        }
+
+        #camara{
+            width: 6.55vw;
+        }
+
+        #zoom, #rotacion{
+            width: 9.125vw;
+            transform: translateY(100%);
+        }
+
+        #fps::-webkit-slider-runnable-track, 
+        #sonido::-webkit-slider-runnable-track,
+        #camara::-webkit-slider-runnable-track,
+        #zoom::-webkit-slider-runnable-track,
+        #rotacion::-webkit-slider-runnable-track{
+            height: 0.365vw;
+            background: linear-gradient(to right, aliceblue 0%, aliceblue var(--value), rgb(14, 114, 114) var(--value), rgb(14, 114, 114) 100%);
+            border-radius: 0.365vw;
+        }
+
+        #fps::-webkit-slider-thumb, 
+        #sonido::-webkit-slider-thumb,
+        #camara::-webkit-slider-thumb, 
+        #zoom::-webkit-slider-thumb, 
+        #rotacion::-webkit-slider-thumb{
+            appearance: none;
+            width: 0.75vw;
+            height: 0.75vw;
+            background: aliceblue;
+            border-radius: 0.98vh;
+            margin-top: calc((0.365vw - 0.75vw)/2);
+        }
+
+        /* CHECK */
+        .check{
+            appearance: none;
+            width: 0.9125vw;
+            height: 0.9125vw;
+            margin-left: 1.45vw;
+            margin-right: 1.45vw;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .4vh;
+            background-color: aliceblue;
+            transform: translateY(10%);
+            cursor: pointer;
+        }
+
+        .check:checked{
+            background-color: rgb(12, 71, 71);
+            border: 2px solid rgb(12, 71, 71);
+        }
+
+        .check:checked::after{
+            content: "X";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: aliceblue;
+            font-size: 0.365vw;
+            font-weight: bold;
+            border-width: 0;
+        }
+
+        /* DESPLEGABLE */
+
+        .opciones-sel{
+            width: 4.38vw;
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            left: 17.5vw;
+            transform: translate(-100%, 0);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .desplegable-sel{
+            font-size: 0.75vw;
+            padding: .1825vw;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .4vh;
+            background-color: aliceblue;
+            color: rgb(12, 71, 71);
+        }
+
+        .desplegable-menu{
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: aliceblue;
+            border: 2px solid rgb(12, 71, 71);
+            color: rgb(12, 71, 71);
+            border-radius: .4vh;
+            z-index: 1;
+        }
+
+        .sel-opciones{
+            padding: .1825vw;
+            font-size: 0.55vw;
+        }
+
+        .sel-opciones:hover{
+            background-color: rgb(227, 233, 237)
+        }
+
+        /* BOTONES ABAJO */
+        .botones{
+            display: flex;
+            flex-direction: row;
+            gap: 0.9125vw;
+            position: absolute;
+            bottom: -1.97vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .texto_boton{
+            width: 9.125vw;
+            font-size: 1.1vw;
+            font-weight: bold;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 2.36vh;
+            background-color: aliceblue;
+            text-align: center;
+            padding: 0.9125vw;
+            cursor: pointer;
+        }
+
+        .texto_boton:hover{
+            color: rgb(17, 150, 150);
+            border: 2px solid rgb(17, 150, 150);
+            background-color: rgb(227, 233, 237);
+        }
+
+        .texto_boton:active{
+            color: rgb(12, 90, 90);
+            border: 2px solid rgb(12, 90, 90);
+            background-color: rgb(169, 173, 176);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu_config">
+        <div id="texto_opciones">OPCIONES</div>
+        <div class="opciones">
+            <div id="op_interior">
+                <p id="t_op">Calidad</p>
+                <div id="calidad_botones">
+                    <!-- <button value="25">Baja</button> -->
+                    <button value="50">Baja</button>
+                    <!-- <button value="75">Alta</button> -->
+                    <button value="100">Alta</button>
+                </div>
+            </div>
+            <!-- <div id="op_interior">
+                <p id="t_op">FPS</p>
+                <div id="fps_ops">
+                    <input id="fps" type="range" min="30" max="120" value="60">
+                    <div style="width: 1.825vw; margin-left: 0.75vw; text-align: end;"><label><span id="fpsValue"></span></label></div>
+                    <label><input id="sinLimite" class="check" type="checkbox">Sin Límite</label>
+                </div>
+            </div> -->
+
+            <!-- <div id="op_interior">
+                <p id="t_op">V-Sync</p>
+                <input id="vsync" class="check" type="checkbox" style="position: absolute; right: 10.95vw;" checked>
+            </div> -->
+
+            <div id="op_interior">
+                <p id="t_op">Volumen</p>
+                <div id="prueba">
+                    <input id="sonido" type="range" min="0" max="100" value="20">
+                    <div style="width: 2.75vw; margin-left: 0.75vw; text-align: end;"><label><span id="sonidoValue"></span>%</label></div>
+                </div>
+            </div>
+
+            <!-- <div id="op_interior">
+                <p id="t_op">Anti-Aliasing</p>
+                <div class="opciones-sel">
+                    <div class="desplegable-sel" value="fxaa">FXAA</div>
+                    <div class="desplegable-menu"></div>
+                </div>
+            </div> -->
+
+            <div id="op_interior">
+                <p id="t_op">Velocidad Cámara</p>
+                <div id="prueba" style="align-items: center;">
+                    <input id="camara" type="range" min="0" max="100" value="100">
+                    <div style="width: 2.75vw; margin-left: 0.75vw; text-align: end;"><label><span id="camaraValue"></span>%</label></div>
+                    <label style="display: flex; flex-direction: row;"><input id="dinvert" class="check" type="checkbox" style="transform: translateY(90%);"><div style="width: 4.75vw;">Dirección Invertida</div></label>
+                </div>
+            </div>
+
+            <div id="op_interior">
+                <p id="t_op">Velocidad Zoom</p>
+                <div id="prueba">
+                    <input id="zoom" type="range" min="0" max="100" value="0">
+                    <div style="width: 2.75vw; margin-left: 0.75vw; text-align: end;"><label><span id="zoomValue"></span>%</label></div>
+                </div>
+            </div>
+
+            <div id="op_interior">
+                <p id="t_op">Velocidad Rotación Instrumentos</p>
+                <div id="prueba">
+                    <input id="rotacion" type="range" min="0" max="100" value="70">
+                    <div style="width: 2.75vw; margin-left: 0.75vw; text-align: end;"><label><span id="rotacionValue"></span>%</label></div>
+                </div>
+            </div>
+        </div>
+        <div class="botones">
+            <button class="texto_boton" id="boton_aplicar" onclick="aplicar()">APLICAR</button>
+            <button class="texto_boton" id="boton_atras" onclick="atras()">ATRÁS</button>
+        </div>
+    </div>
+
+    <script>
+        var sFPS = $("#fps");
+        var sSonido = $("#sonido");
+        var sCamara = $("#camara");
+        var sZoom = $("#zoom");
+        var sRotacion = $("#rotacion");
+
+        var antialV = null;
+
+        
+
+        $(document).ready(function(){
+            setTimeout(() => {
+                document.body.focus();
+            }, 50);
+
+            var datos = JSON.parse(localStorage.getItem("opciones"));
+
+            if(datos){
+                $("#calidad_botones button").removeClass("active");
+                $("#calidad_botones button").each(function(){
+                    if($(this).val == datos.calidad){
+                        $(this).addClass("active");
+                    }
+                });
+
+                sFPS.val(datos.fps).trigger("input");
+                sSonido.val(datos.sonido).trigger("input");
+                $("#antial").val(datos.antial).trigger("input");
+                sCamara.val(datos.camara).trigger("input");
+                sZoom.val(datos.zoom).trigger("input");
+                sRotacion.val(datos.rotacion).trigger("input");
+            }
+
+
+            $("#calidad_botones button").on("click", function(){
+                $("#calidad_botones button").removeClass("active");
+
+                $(this).addClass("active");
+            })
+
+            // FPS
+            function actFPS(){
+                var valFPS = sFPS.val();
+                var maxFPS = sFPS.attr("max");
+                var minFPS = sFPS.attr("min");
+                var porcentajeFPS = (valFPS - minFPS) / (maxFPS - minFPS) * 100 + "%";
+                sFPS.css("--value", porcentajeFPS);
+            }
+
+            $("#fpsValue").text(sFPS.val());
+            
+            sFPS.on("input", function(){
+                $("#fpsValue").text(sFPS.val());
+                actFPS();
+            })
+
+            // SONIDO
+            function actSonido(){
+                var valS = sSonido.val();
+                var maxS = sSonido.attr("max");
+                var porcentajeS = (valS/maxS) * 100 +"%";
+                sSonido.css("--value", porcentajeS);
+                console.log("msg3:sonido=" + valS);
+            }
+
+            $("#sonidoValue").text(sSonido.val());
+            
+            sSonido.on("input", function(){
+                $("#sonidoValue").text(sSonido.val());
+                actSonido();
+            })
+
+            // ANTI-ALIASING
+            var opciones = [{text: "Off", value: "0"},{text: "FXAA", value: "1"},{text: "TAA", value: "2"},{text: "MSAA", value: "3"},{text: "TSR", value: "4"}];
+
+            opLista(opciones);
+
+            $(".desplegable-sel").on("click", function(e){
+                e.stopPropagation();
+                $(".desplegable-menu").toggle();
+            });
+
+            $(document).on("click", ".sel-opciones", function(){
+                var texto = $(this).text();
+                var valor = $(this).data("value");
+
+                $(".desplegable-sel").text(texto);
+                $(".desplegable-menu").hide();
+
+                antialV = valor;
+            });
+
+            $(document).on("click", function(){
+                $(".desplegable-menu").hide();
+            });
+
+            // CAMARA
+            function actCamara(){
+                var valC = sCamara.val();
+                var maxC = sCamara.attr("max");
+                var porcentajeC = (valC/maxC) * 100 +"%";
+                sCamara.css("--value", porcentajeC);
+            }
+
+            $("#camaraValue").text(sCamara.val());
+            
+            sCamara.on("input", function(){
+                $("#camaraValue").text(sCamara.val());
+                actCamara();
+            })
+
+            // ZOOM
+            function actZoom(){
+                var valZ = sZoom.val();
+                var maxZ = sZoom.attr("max");
+                var porcentajeZ = (valZ/maxZ) * 100 +"%";
+                sZoom.css("--value", porcentajeZ);
+            }
+
+            $("#zoomValue").text(sZoom.val());
+            
+            sZoom.on("input", function(){
+                $("#zoomValue").text(sZoom.val());
+                actZoom();
+            })
+
+            // ROTACION
+            function actRotacion(){
+                var valR = sRotacion.val();
+                var maxR = sRotacion.attr("max");
+                var porcentajeR = (valR/maxR) * 100 +"%";
+                sRotacion.css("--value", porcentajeR);
+            }
+
+            $("#rotacionValue").text(sRotacion.val());
+            
+            sRotacion.on("input", function(){
+                $("#rotacionValue").text(sRotacion.val());
+                actRotacion();
+            })
+
+            actFPS();
+            actSonido();
+            actCamara();
+            actZoom();
+            actRotacion();
+        })
+
+        function opLista(lista){
+            $(".desplegable-menu").empty();
+            lista.forEach(function(op){
+                $(".desplegable-menu").append("<div class='sel-opciones' data-value='"+op.value+"'>"+op.text+"</div>");
+            })
+        }
+
+        $(document).on("click", "#boton_aplicar", function(){
+            document.activeElement.blur();
+
+            var calidadV = $("#calidad_botones button.active").val() || null;
+            var fpsV = sFPS.val();
+            var sinLimiteV = $("#sinLimite").is(":checked");
+            var vsync = $("#vsync").is(":checked");
+            var sonidoV = sSonido.val();
+            var camaraV = sCamara.val();
+            var dinvertV = $("#dinvert").is(":checked");
+            var zoomV = sZoom.val();
+            var rotacionV = sRotacion.val();
+
+            var datos = {
+                calidad: calidadV, fps: fpsV, sonido: sonidoV, antial: antialV, camara: camaraV, zoom: zoomV, rotacion: rotacionV
+            };
+
+            localStorage.setItem("opciones", JSON.stringify(datos));
+            
+            console.log("msg1:calidad=" + calidadV);
+            console.log("msg1:sinlimite=" + sinLimiteV);
+            console.log("msg1:fps=" + fpsV);
+            console.log("msg1:vsync=" + vsync);
+            console.log("msg1:sonido=" + sonidoV);
+            console.log("msg1:antial=" + antialV);
+            console.log("msg1:camara=" + camaraV);
+            console.log("msg1:dinvert=" + dinvertV);
+            console.log("msg1:zoom=" + zoomV);
+            console.log("msg1:rotacion=" + rotacionV);
+
+            window.location.reload();
+        });
+
+        $(document).on("click", "#boton_atras", function(){
+            document.activeElement.blur();
+            console.log("msg2:atras=atras");
+        });
+    </script>
+</body>
+</html>

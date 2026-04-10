@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de modo de juego</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            background: transparent;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            font-family: roboto;
+        }
+
+        #barra{
+            height: 100vh;
+            border-radius: 15vh;
+            font-size: 60vh;
+            font-weight: bold;
+            color: aliceblue;
+            background-color: rgb(41, 168, 168);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="barra"></div>
+    
+    <script>
+        var ejecutado = false;
+        var barra = $("#barra");
+
+        $(document).ready(function(){
+            if(!ejecutado){
+                console.log("mjuego");
+                ejecutado = true;
+            }
+        })
+
+        function recibirDatosM(msg){
+            // console.log("Mensaje recibido: " + msg);
+            barra.text(msg);
+        }
+    </script>
+</body>
+</html>

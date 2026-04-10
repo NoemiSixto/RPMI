@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post_esquina</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-family: roboto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu_pausa{
+            width: 36.5vw;
+            height: 78.7vh;
+            background-color: rgb(90, 169, 169);
+            border-radius: 7.87vh;
+            position: relative;
+            top: 50vh;
+            transform: translateY(-50%);
+        }
+
+        #texto_pausa{
+            width: 25.5vw;
+            font-size: 5vh;
+            font-weight: bold;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            background-color: aliceblue;
+            text-align: center;
+            padding: 2.5vh 0;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            user-select: none;
+        }
+
+        .botones{
+            display: flex;
+            flex-direction: column;
+            gap: 6vh;
+            position: absolute;
+            transform: translate(12.5%, 2%);
+        }
+
+        button{
+            width: 29.2vw;
+            height: 10vh;
+            color: aliceblue;
+            font-size: 3vh;
+            font-weight: bold;
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            background-color: rgb(41, 168, 168);
+            cursor: pointer;
+        }
+
+        button:hover{
+            color: rgb(227, 233, 237);
+            border: 2px solid rgb(17, 150, 150);
+            background-color: rgb(70, 181, 181);
+        }
+
+        button:active{
+            color: rgb(169, 173, 176);
+            border: 2px solid rgb(12, 90, 90);
+            background-color: rgb(36, 139, 139);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu_pausa">
+        <div id="texto_pausa">PAUSA</div>
+        <div class="botones">
+            <button onclick="reanudarJuego()">REANUDAR</button>
+            <button onclick="reiniciarJuego()">REINICIAR</button>
+            <button onclick="opcionesJuego()">OPCIONES</button>
+            <button onclick="salirMenu()">SALIR</button>
+        </div>
+    </div>
+
+    <script>
+        function reanudarJuego(){
+            document.activeElement.blur();
+            console.log("reanudar");
+        }
+
+        function reiniciarJuego(){
+            document.activeElement.blur();
+            console.log("reiniciar");
+        }
+
+        function opcionesJuego(){
+            document.activeElement.blur();
+            console.log("opciones");
+        }
+
+        function salirMenu(){
+            document.activeElement.blur();
+            console.log("salir");
+        }
+    </script>
+</body>
+</html>

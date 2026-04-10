@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu_esquina</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        .menu{
+            width: 100vw;
+            height: 100vh;
+            border-radius: 10vh;
+            background-color: rgb(14, 114, 114);
+            position: relative;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .menu:hover{
+            background-color: rgb(17, 150, 150);
+        }
+
+        .menu:active{
+            background-color: rgb(12, 90, 90);
+        }
+
+        .lineas{
+            display: flex;
+            flex-direction: column;
+            gap: 5vh;
+            width: 85vw;
+            height: 85vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(8.5%, 17.5%);
+        }
+
+        .linea{
+            width: 85vw;
+            height: 20vh;
+            border-radius: 5vh;
+            background-color: rgb(41, 168, 168);
+        }
+
+        .menu:hover .linea{
+            background-color: rgb(70, 181, 181);
+        }
+
+        .menu:active .linea{
+            background-color: rgb(36, 139, 139);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu" onclick="pausaJuego()">
+        <div class="lineas">
+            <div class="linea" id="linea1"></div>
+            <div class="linea" id="linea2"></div>
+            <div class="linea" id="linea3"></div>
+        </div>
+    </div>
+
+    <script>
+        function pausaJuego(){
+            console.log("menu_pausa");
+        }
+    </script>
+</body>
+</html>

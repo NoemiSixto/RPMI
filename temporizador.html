@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+        
+        body{
+            margin: 0;
+            height: 100vh;
+            background: transparent;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            font-family: roboto;
+            user-select: none;
+        }
+
+        #temporizador{
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            border: 4vw solid rgb(41, 168, 168);
+            border-radius: 10vw;
+            color: red;
+            font-size: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="temporizador">00:00</div>
+
+    <script>
+        function recibirTiempo(msg){
+            $("#temporizador").text(msg);
+        }
+
+        // $(document).ready(function(){
+        //     var segundos = 0;
+
+        //     function actTiempo(){
+        //         segundos ++;
+
+        //         var minutos = Math.floor(segundos/60);
+        //         var seg = segundos % 60;
+
+        //         minutos = minutos < 10 ? "0" + minutos : minutos;
+        //         seg = seg < 10 ? "0" + seg : seg;
+
+        //         $("#temporizador").text(minutos + ":" + seg);
+        //     }
+
+        //     setInterval(actTiempo, 1000);
+        // })
+    </script>
+</body>
+</html>
