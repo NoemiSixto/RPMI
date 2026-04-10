@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Categorías</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 71, 71);
+            font-family: roboto;
+            overflow: hidden;
+        }
+
+        /* TÍTULO */
+
+        .categoria{
+            width: 30vw;
+            font-size: 3vw;
+            font-weight: bold;
+            background-color: aliceblue;
+            text-align: center;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            margin: 4vh 0 8vh;
+            position: relative;
+            left: 50vw;
+            transform: translate(-50%, 0%);
+            user-select: none;
+        }
+
+        /* FLECHAS CAMBIO */
+
+        .flechas{
+            width: 4vw;
+            font-size: 2vw;
+            font-weight: bold;
+            background-color: rgb(41, 168, 168);
+            color: aliceblue;
+            text-align: center;
+            border: none;
+            border-radius: 3vh;
+            padding: 1.5vh 1vw;
+            cursor: pointer;
+        }
+
+        .flechas:hover{
+            background-color: rgb(70, 181, 181);
+            color: rgb(227, 233, 237);
+        }
+
+        .flechas:active{
+            background-color: rgb(36, 139, 139);
+            color: rgb(169, 173, 176);
+        }
+
+        #flechaD{
+            position: absolute;
+            top: 50vh;
+            right: 7vw;
+        }
+
+        #flechaI{
+            position: absolute;
+            top: 50vh;
+            left: 7vw;
+        }
+
+        /* BOTONES CATEGORÍA */
+
+        .botones{
+            width: 70vw;
+            display: flex;
+            position: relative;
+            left: 50vw;
+            transform: translate(-50%, 0%);
+            overflow: hidden;
+        }
+
+        .botones .setB1,
+        .botones .setB2{
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        .botones button{
+            width: 20vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: aliceblue;
+            border: none;
+            border-radius: 3vh;
+            background-color: rgb(14, 114, 114);
+            cursor: pointer;
+            padding: 4vh 2vw 4vh 2vw;
+        }
+
+        .botones button:hover{
+            color: rgb(227, 233, 237);
+            border: none;
+            background-color: rgb(17, 150, 150);
+        }
+
+        .botones button:active{
+            color: rgb(169, 173, 176);
+            background-color: rgb(12, 90, 90);
+        }
+
+        .botones button h1{
+            font-size: 1.5vw;
+            margin-top: 2vh;
+        }
+
+        .botones button p{
+            font-size: .75vw;
+            margin-top: 0;
+            margin-bottom: 3vh;
+        }
+
+        .imagen{
+            width: 15vw;
+            height: 15vw;
+        }
+
+        /* CAMBIO DE IMAGEN QUIRÚRGICA */
+
+        #i1{
+            content: url(assets/img/iqi.png);
+        }
+
+        .botones button:hover #i1{
+            content: url(assets/img/iqi_hover.png);
+        }
+
+        .botones button:active #i1{
+            content: url(assets/img/iqi_active.png);
+        }
+
+        /* CAMBIO DE IMAGEN HIGIENE BUCODENTAL */
+
+        #i2{
+            content: url(assets/img/hbd.png);
+        }
+
+        .botones button:hover #i2{
+            content: url(assets/img/hbd_hover.png);
+        }
+
+        .botones button:active #i2{
+            content: url(assets/img/hbd_active.png);
+        }
+
+        /* CAMBIO DE IMAGEN FORENSE */
+
+        #i3{
+            content: url(assets/img/ifa.png);
+        }
+
+        .botones button:hover #i3{
+            content: url(assets/img/ifa_hover.png);
+        }
+
+        .botones button:active #i3{
+            content: url(assets/img/ifa_active.png);
+        }
+
+        /* BOTÓN ATRÁS */
+
+        .atras{
+            width: 10vw;
+            font-size: 1.5vw;
+            font-weight: bold;
+            background-color: rgb(41, 168, 168);
+            color: aliceblue;
+            text-align: center;
+            border: none;
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            position: absolute;
+            bottom: 5.5vh;
+            left: 86vw;
+            cursor: pointer;
+        }
+
+        .atras:hover{
+            background-color: rgb(70, 181, 181);
+            color: rgb(227, 233, 237);
+        }
+
+        .atras:active{
+            background-color: rgb(36, 139, 139);
+            color: rgb(169, 173, 176);
+        }
+    </style>
+</head>
+<body>
+    <div class="categoria">CATEGORÍA</div>
+    <button class="flechas" id="flechaD" onclick="derecha()">D</button>
+    <button class="flechas" id="flechaI" onclick="izquierda()">I</button>
+    <div class="botones">
+        <div class="setB1">
+            <button value="quirurgica">
+                <img class="imagen" id="i1">
+                <h1>QUIRÚRGICA</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+            <button class="hdental" value="hdental">
+                <img class="imagen" id="i2">
+                <h1>HIGIENE BUCODENTAL</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+            <button value="forense">
+                <img class="imagen" id="i3">
+                <h1>FORENSE</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+        </div>
+        <div class="setB2">
+            <button value="laboratorio">
+                <img class="imagen" src="assets/img/prueba.png">
+                <h1>LABORATORIO</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+            <button value="extra">
+                <img class="imagen" src="assets/img/prueba.png">
+                <h1>TEXTO PRUEBA</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+            <button value="extra">
+                <img class="imagen" src="assets/img/prueba.png">
+                <h1>TEXTO PRUEBA</h1>
+                <p>Texto prueba texto prueba texto prueba texto prueba texto</p>
+            </button>
+        </div>
+    </div>
+    
+    <a href="menuInicio.html">
+        <button class="atras">ATRÁS</button>
+    </a>
+
+    <script>
+        $(document).ready(function(){
+            var botones = $(".botones");
+            var set = $(".botones > div");
+            var scroll = $(".botones").width();
+            var indexActual = 0;
+
+            $("#flechaI").hide();
+
+            function flechas(){
+                if(indexActual === 0){
+                    $("#flechaI").hide();
+                }
+                else{
+                    $("#flechaI").show();
+                }
+
+                if(indexActual === set.length - 1){
+                    $("#flechaD").hide();
+                }
+                else{
+                    $("#flechaD").show();
+                }
+            }
+
+            window.derecha = function(){
+                if (indexActual < set.length - 1){
+                    indexActual++;
+                    botones.animate({
+                        scrollLeft: indexActual * scroll
+                    }, 500);
+                }
+                flechas();
+            }
+
+            window.izquierda = function(){
+                if (indexActual > 0){
+                    indexActual--;
+                    botones.animate({
+                        scrollLeft: indexActual * scroll
+                    }, 500);
+                }
+                flechas();
+            }
+
+            $(".botones button").on("click", function(){
+                var valor = $(this).val();
+                var hdental = (valor === "hdental");
+                var forense = (valor === "forense");
+                window.location.href = "menuModos.html?categoria=" + valor + "&hdental=" + hdental + "&forense=" + forense;
+            })
+        })
+    </script>
+</body>
+</html>

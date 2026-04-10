@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Modo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 71, 71);
+            font-family: roboto;
+            overflow: hidden;
+        }
+
+        /* TÍTULO */
+
+        .modo{
+            width: 30vw;
+            font-size: 3vw;
+            font-weight: bold;
+            background-color: aliceblue;
+            text-align: center;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            margin: 4vh 0 8vh;
+            position: relative;
+            left: 50vw;
+            transform: translate(-50%, 0%);
+            user-select: none;
+        }
+
+        /* BOTONES MODO DE JUEGO */
+
+        .botones{
+            display: flex;
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        .botones button{
+            width: 20vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: aliceblue;
+            border: none;
+            border-radius: 3vh;
+            background-color: rgb(14, 114, 114);
+            cursor: pointer;
+            padding: 4vh 2vw 4vh 2vw;
+        }
+
+        .botones button:hover{
+            color: rgb(227, 233, 237);
+            border: none;
+            background-color: rgb(17, 150, 150);
+        }
+
+        .botones button:active{
+            color: rgb(169, 173, 176);
+            background-color: rgb(12, 90, 90);
+        }
+
+        .botones button h1{
+            font-size: 1.5vw;
+            margin-top: 2vh;
+        }
+
+        .botones button p{
+            font-size: .75vw;
+            margin-top: 0;
+            margin-bottom: 3vh;
+        }
+
+        .imagen{
+            width: 15vw;
+            height: 15vw;
+        }
+
+        /* CAMBIO DE IMAGEN NOMBRES */
+
+        #i1{
+            content: url(assets/img/nombres.png);
+        }
+
+        .botones button:hover #i1{
+            content: url(assets/img/nombres_hover.png);
+        }
+
+        .botones button:active #i1{
+            content: url(assets/img/nombres_active.png);
+        }
+
+        /* CAMBIO DE IMAGEN GRUPOS */
+
+        #i2{
+            content: url(assets/img/grupos.png);
+        }
+
+        .botones button:hover #i2{
+            content: url(assets/img/grupos_hover.png);
+        }
+
+        .botones button:active #i2{
+            content: url(assets/img/grupos_active.png);
+        }
+
+        /* CAMBIO DE IMAGEN PROCEDIMIENTOS */
+
+        #i3{
+            content: url(assets/img/procedimientos.png);
+        }
+
+        .botones button:hover #i3{
+            content: url(assets/img/procedimientos_hover.png);
+        }
+
+        .botones button:active #i3{
+            content: url(assets/img/procedimientos_active.png);
+        }
+
+        /* BOTÓN ATRÁS */
+
+        .atras{
+            width: 10vw;
+            font-size: 1.5vw;
+            font-weight: bold;
+            background-color: rgb(41, 168, 168);
+            color: aliceblue;
+            text-align: center;
+            border: none;
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            position: absolute;
+            bottom: 5.5vh;
+            left: 86vw;
+            cursor: pointer;
+        }
+
+        .atras:hover{
+            background-color: rgb(70, 181, 181);
+            color: rgb(227, 233, 237);
+        }
+
+        .atras:active{
+            background-color: rgb(36, 139, 139);
+            color: rgb(169, 173, 176);
+        }
+    </style>
+</head>
+<body>
+    <div class="modo">MODO DE JUEGO</div>
+    <div class="botones">
+        <button value="nombres">
+            <img class="imagen" id="i1">
+            <h1>NOMBRES</h1>
+            <p>Identifica los instrumentos por su nombre</p>
+        </button>
+        <button id="grupos" value="grupos">
+            <img class="imagen" id="i2">
+            <h1>GRUPOS</h1>
+            <p>Identifica en qué grupo pertenecen los instrumentos</p>
+        </button>
+        <button id="procedimientos" value="procedimientos">
+            <img class="imagen" id="i3">
+            <h1>PROCEDIMIENTOS</h1>
+            <p>Identifica en qué procedimiento se usa cada instrumento</p>
+        </button>
+    </div>
+    <a href="menuCategoria.html">
+        <button class="atras">ATRÁS</button>
+    </a>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var hdental = params.get("hdental") === "true";
+        var forense = params.get("forense") === "true";
+        var categoria = params.get("categoria");
+        
+        $(document).ready(function(){
+            // ELIMINACIÓN DE GRUPOS Y PROCEDIMIENTO SI SE PINCHA EN "HIGIENE BUCODENTAL" O "FORENSE"
+            if (hdental){
+                $("#grupos").hide();
+            }
+            
+            if (forense){
+                $("#procedimientos").hide();
+            }
+
+            $(".botones button").on("click", function(){
+                var modo = $(this).val();
+                window.location.href = "menuOpciones.html?modo=" + modo + "&categoria=" + categoria + "&hdental=" + hdental + "&forense=" + forense;
+            })
+        });
+    </script>
+</body>
+</html>

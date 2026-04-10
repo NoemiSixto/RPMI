@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Opciones</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 71, 71);
+            font-family: roboto;
+            overflow: hidden;
+        }
+
+        /* TÍTULO */
+
+        .opciones{
+            width: 30vw;
+            font-size: 3vw;
+            font-weight: bold;
+            background-color: aliceblue;
+            text-align: center;
+            color: rgb(14, 114, 114);
+            border: 2px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            margin: 4vh 0 8vh;
+            position: relative;
+            left: 50vw;
+            transform: translate(-50%, 0%);
+            user-select: none;
+        }
+
+        /* CONTENIDO */
+
+        .contenido{
+            width: 70vw;
+            height: 60vh;
+            position: relative;
+            left: 15vw;
+            display: flex;
+            flex-direction: row;
+            gap: 1vw;
+        }
+
+        .contenido-casillas{
+            width: 48vw;
+            display: flex;
+            flex-direction: column;
+            gap: 4vh;
+        }
+
+        /* DIFICULTAD */
+
+        .dificultad{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            height: 45%;
+            color: aliceblue;
+            background-color: rgb(41, 168, 168);
+            border: none;
+            border-radius: 3vh;
+            padding: 1vh 2vw 4vh 2vw;
+            user-select: none;
+        }
+
+        .dificultad h1{
+            font-size: 2.5vw;
+            font-weight: bolder;
+            margin: 1.5vh 0 2vh;
+            color: rgb(12, 71, 71);
+        }
+
+        /* MODO DE ESTUDIO */
+
+        .modo-estudio{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            height: 45%;
+            color: aliceblue;
+            background-color: rgb(41, 168, 168);
+            border: none;
+            border-radius: 3vh;
+            padding: 1vh 2vw 4vh 2vw;
+            user-select: none;
+        }
+
+        .modo-estudio h1{
+            font-size: 2.5vw;
+            font-weight: bolder;
+            margin: 1.5vh 0;
+            color: rgb(12, 71, 71);
+        }
+
+        .modo-estudio p{
+            font-size: 1vw;
+            text-align: center;
+        }
+
+        /* CASILLAS */
+
+        .casillas{
+            display: flex;
+            justify-content: center;
+            font-size: 1.5vw;
+        }
+
+        .casillas label{
+            display: flex;
+            margin: 0 1.5vw;
+            align-items: center;
+            gap: .25vw;
+        }
+
+        /* CHECK */
+
+        .check{
+            appearance: none;
+            width: 1.5vw;
+            height: 1.5vw;
+            margin-left: 1vh;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .5vh;
+            background-color: aliceblue;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .check:checked{
+            background-color: rgb(12, 71, 71);
+            border: 2px solid rgb(12, 71, 71);
+        }
+
+        .check:checked::after{
+            content: "X";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: aliceblue;
+            font-size: 1vw;
+            font-weight: bold;
+            border-width: 0;
+        }
+
+        /* COLUMNA DERECHA */
+
+        .ini-rei{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2vh;
+            width: 20vw;
+            background-color: rgb(41, 168, 168);
+            border: none;
+            border-radius: 3vh;
+        }
+
+        /* GRUPOS */
+
+        .ini-rei h1{
+            font-size: 2.5vw;
+            font-weight: bolder;
+            margin: 1vh 0;
+            color: rgb(12, 71, 71);
+            user-select: none;
+        }
+
+        .grupos{
+            width: 90%;
+            height: 45%;
+            background-color: #afbebc;
+            border: none;
+            border-radius: 3vh;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .opciones-sel{
+            width: 12vw;
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .desplegable-sel{
+            font-size: 1.5vw;
+            padding: .5vw;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .5vh;
+            background-color: aliceblue;
+            color: rgb(12, 71, 71);
+        }
+
+        .desplegable-menu{
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: aliceblue;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .5vh;
+            z-index: 1;
+        }
+
+        .sel-opciones{
+            padding: .5vw;
+            font-size: 1.5vw;
+        }
+
+        .sel-opciones:hover{
+            background-color: rgb(227, 233, 237)
+        }
+
+        /* LINEA DIV GRUPOS */
+
+        .grupos #linea1{
+            width: 60%;
+            height: .25vh;
+            background-color: rgb(12, 71, 71);
+            margin: 1.5vh 0;
+            position: relative;
+            left: 3.5vw;
+        }
+
+        /* BOTÓN RANDOM */
+
+        .ini-rei .grupos button{
+            justify-content: center;
+            font-size: 1.5vw;
+            font-weight: bold;
+            color: rgb(12, 71, 71);
+            background-color: aliceblue;
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .5vh;
+            padding: .5vw;
+            margin-bottom: 2vh;
+            cursor: pointer;
+        }
+
+        .ini-rei .grupos button:hover{
+            color: rgb(25, 116, 116);
+            background-color: rgb(227, 233, 237);
+            border: 2px solid rgb(25, 116, 116);
+        }
+
+        .ini-rei .grupos button:active{
+            color: rgb(5, 39, 39);
+            background-color: rgb(169, 173, 176);
+            border: 2px solid rgb(5, 39, 39);
+        }
+
+        /* LINEA DIV OPCIONES */
+
+        .linea2{
+            width: 80%;
+            height: .25vh;
+            background-color: rgb(12, 71, 71);
+            margin: 3vh 0 3vh;
+        }
+
+        /* INICIO - LIMPIAR */
+
+        .ini-lim{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2vh;
+            width: 20vw;
+            background-color: rgb(41, 168, 168);
+            border: none;
+            border-radius: 3vh;
+            margin-bottom: 3.5vh;
+        }
+
+        .ini-rei button{
+            justify-content: center;
+            font-size: 1.5vw;
+            font-weight: bold;
+            color: aliceblue;
+            background-color: rgb(12, 71, 71);
+            border: 2px solid rgb(12, 71, 71);
+            border-radius: .5vh;
+            padding: .5vw;
+            cursor: pointer;
+        }
+
+        .ini-rei button:hover{
+            color: rgb(227, 233, 237);
+            background-color: rgb(25, 116, 116);
+            border: 2px solid rgb(25, 116, 116);
+        }
+
+        .ini-rei button:active{
+            color: rgb(169, 173, 176);
+            background-color: rgb(5, 39, 39);
+            border: 2px solid rgb(5, 39, 39);
+        }
+
+        /* BOTÓN ATRÁS */
+
+        .atras{
+            width: 10vw;
+            font-size: 1.5vw;
+            font-weight: bold;
+            background-color: rgb(41, 168, 168);
+            color: aliceblue;
+            text-align: center;
+            border: none;
+            border-radius: 3vh;
+            padding: 1.5vh 1vh;
+            position: absolute;
+            bottom: 5.5vh;
+            left: 86vw;
+            cursor: pointer;
+        }
+
+        .atras:hover{
+            background-color: rgb(70, 181, 181);
+            color: rgb(227, 233, 237);
+        }
+
+        .atras:active{
+            background-color: rgb(36, 139, 139);
+            color: rgb(169, 173, 176);
+        }
+    </style>
+</head>
+<body>
+    <div class="opciones">OPCIONES</div>
+    <div class="contenido">
+        <div class="contenido-casillas">
+            <div class="dificultad">
+                <h1>Dificultad</h1>
+                <div class="casillas">
+                    <label>
+                        <input class="check" type="radio" name="dificultad" value="facil">Fácil
+                    </label>
+                    <label>
+                        <input class="check" type="radio" name="dificultad" value="normal">Normal
+                    </label>
+                    <label>
+                        <input class="check" type="radio" name="dificultad" value="dificil">Difícil
+                    </label>
+                </div>
+            </div>
+            <div class="modo-estudio">
+                <h1>Modo de Estudio</h1>
+                <p>En PRÁCTICA, los fallos se notificarán al instante.<br>En EXAMEN, se te notificarán al final.</p>
+                <div class="casillas">
+                    <label>
+                        <input class="check" type="radio" name="modoEstudio" value="estudio">Estudio
+                    </label>
+                    <label>
+                        <input class="check" type="radio" name="modoEstudio" value="examen">Examen
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="ini-rei">
+            <div class="grupos">
+                <h1>Grupos</h1>
+                <div class="opciones-sel">
+                    <div class="desplegable-sel">Opciones</div>
+                    <div class="desplegable-menu"></div>
+                </div>
+                <div id="linea1"></div>
+                <button>Random</button>
+            </div>
+            <div class="linea2"></div>
+            <div class="ini-lim">
+                <button id="iniciar">Iniciar</button>
+                <button>Limpiar</button>
+            </div>
+        </div>
+    </div>
+    <button class="atras" onclick="atras()">ATRÁS</button>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var hdental = params.get("hdental") === "true";
+        var forense = params.get("forense") === "true";
+        var categoria = params.get("categoria");
+        var modo = params.get("modo");
+
+        var seleccion = null;
+
+        $(document).ready(function(){
+            if (modo == "nombres"){
+                $(".grupos").hide();
+                $(".linea2").hide();
+            }
+
+            var opciones1 = [{text: "Aspiración", value: "aspiracion"},{text: "Campo", value: "campo"},{text: "Diéresis", value: "dieresis"},{text: "Disección y aprehensión", value: "disyapre"},{text: "Exploración", value: "exploracion"},{text: "Hemostasia", value: "hemostasia"},{text: "Separadores", value: "separadores"},{text: "Sutura", value: "sutura"},{text: "Material auxiliar", value: "mataux"},{text: "Otros", value: "otros"}];
+
+            var opciones2 = [{text: "Aislamiento", value: "aislamiento"},{text: "Anestesia", value: "anestesia"},{text: "Exploración", value: "exploracion"},{text: "Obturación de amalgama", value: "obturacion"},{text: "Ortodoncia", value: "ortodoncia"},{text: "Prótesis fija", value: "protesis"}];
+
+            if (modo == "grupos"){
+                opLista(opciones1);
+            }
+
+            if (modo == "procedimientos"){
+                $(".grupos h1").text("Procedimientos").css("font-size", "2vw");
+                opLista(opciones2);
+            }
+
+            $(".desplegable-sel").on("click", function(e){
+                e.stopPropagation();
+                $(".desplegable-menu").toggle();
+            });
+
+            $(document).on("click", ".sel-opciones", function(){
+                var texto = $(this).text();
+                var valor = $(this).data("value");
+
+                $(".desplegable-sel").text(texto);
+                $(".desplegable-menu").hide();
+
+                seleccion = valor;
+            })
+
+            $(document).on("click", function(){
+                $(".desplegable-menu").hide();
+            });
+
+            $(".ini-lim button:contains('Iniciar')").on("click", function(){
+                var setb1 = $("input[name='dificultad']:checked").length;
+                var setb2 = $("input[name='modoEstudio']:checked").length;
+
+                if(modo == "nombres"){
+                    if(setb1 > 0 && setb2 > 0){
+                        $(".ini-lim button:contains('Iniciar')").prop("disabled", false);
+                        var dificultad = $("input[name='dificultad']:checked").val();
+                        var modoEstudio = $("input[name='modoEstudio']:checked").val();
+
+                        console.log("msg:dificultad=" + dificultad);
+                        console.log("msg:modoestudio=" + modoEstudio);
+                        console.log("msg:modo=" + modo);
+                        console.log("msg:categoria=" + categoria);
+                        console.log("msg:iniciar=");
+                        alert("Estamos en nombres");
+                    }
+                }
+
+                if(modo == "grupos"){
+                    if(setb1 > 0 && setb2 > 0 && seleccion != null){
+                        $(".ini-lim button:contains('Iniciar')").prop("disabled", false);
+                        var dificultad = $("input[name='dificultad']:checked").val();
+                        var modoEstudio = $("input[name='modoEstudio']:checked").val();
+                        var desplegable = seleccion;
+
+                        console.log("msg:desplegableG=" + desplegable);
+                        console.log("msg:dificultad=" + dificultad);
+                        console.log("msg:modoestudio=" + modoEstudio);
+                        console.log("msg:modo=" + modo);
+                        console.log("msg:categoria=" + categoria);
+                        console.log("msg:iniciar=");
+                        alert("Mandamos seleccion:" + seleccion);
+                    }
+                }
+
+                if(modo == "procedimientos"){
+                    if(setb1 > 0 && setb2 > 0 && seleccion != null){
+                        $(".ini-lim button:contains('Iniciar')").prop("disabled", false);
+                        var dificultad = $("input[name='dificultad']:checked").val();
+                        var modoEstudio = $("input[name='modoEstudio']:checked").val();
+                        var desplegable = seleccion;
+
+                        console.log("msg:desplegableP=" + desplegable);
+                        console.log("msg:dificultad=" + dificultad);
+                        console.log("msg:modoestudio=" + modoEstudio);
+                        console.log("msg:modo=" + modo);
+                        console.log("msg:categoria=" + categoria);
+                        console.log("msg:iniciar=");
+                        alert("Mandamos seleccion:" + seleccion);
+                    }
+                }
+                
+            });
+
+            $(".ini-lim button:contains('Limpiar')").on("click", function(){
+                $("input[type= 'radio']").prop("checked", false);
+                $(".opciones-sel").prop("selectedIndex", 0);
+            })
+        });
+
+        function opLista(lista){
+            $(".desplegable-menu").empty();
+            lista.forEach(function(op){
+                $(".desplegable-menu").append("<div class='sel-opciones' data-value='"+op.value+"'>"+op.text+"</div>");
+            })
+        }
+
+        function atras(){
+            window.location.href = "menuModos.html?categoria=" + categoria + "&hdental=" + hdental + "&forense=" + forense + "&modo=" + modo;
+        }
+    </script>
+</body>
+</html>
