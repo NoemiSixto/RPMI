@@ -1,147 +1,92 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styleindex.css">
-    <title>INICIO</title>
+    <title>Inicio</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="assets/img/calavera_fondo.png">
+    <style>
+        @font-face {
+            font-family: "roboto";
+            src: url(assets/fonts/Roboto-Regular.ttf);
+        }
+
+        body{
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(12, 71, 71);
+            overflow: hidden;
+            font-family: roboto;
+            text-align: center;
+        }
+
+        /* BOTONES */
+
+        .botones{
+            display: flex;
+            flex-direction: column;
+            gap: 5vh;
+            position: absolute;
+            transform: translate(12.5%, 7.5%);
+        }
+
+        .botones h1{
+            margin: 0;
+            font-size: 5.5vh;
+            font-weight: bold;
+            color: aliceblue;
+        }
+
+        button{
+            width: 80vw;
+            color: aliceblue;
+            font-size: 5vh;
+            font-weight: bold;
+            padding: 2vh 0;
+            border: 5px solid rgb(14, 114, 114);
+            border-radius: 3vh;
+            background-color: rgb(41, 168, 168);
+            cursor: pointer;
+        }
+
+        button:hover{
+            color: rgb(227, 233, 237);
+            border: 5px solid rgb(17, 150, 150);
+            background-color: rgb(70, 181, 181);
+        }
+
+        button:active{
+            color: rgb(169, 173, 176);
+            border: 5px solid rgb(12, 90, 90);
+            background-color: rgb(36, 139, 139);
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html">
-            <img class="logo-header" src="assets/img/calavera_vacia.png">
+    <div class="botones">
+        <h1>PRUEBA MENÚ INICIO</h1>
+        <a href="menuCategoria.html">
+            <button id="jugar">JUGAR</button>
         </a>
-        <img class="animation" src="assets/img/animation.svg"> 
-        <img class="horror-fest" src="assets/img/horror_fest.svg">
-        <nav class="menu-nav">
-            <div class="nav">
-        <div class="menu">
-            <spam class="bar"></spam>
-            <spam class="bar"></spam>
-            <spam class="bar"></spam>
-        </div>
-    
-        </div>
-        </nav>
-        <div class="menu-desplegable">
-            <ul class="nav-link">
-                <li class="link1">
-                    <a href="index.html">
-                        <input class="boton-menu-inicio" type="submit" value="Inicio">
-                    </a>
-                </li>
-                <li class="link2">
-                    <a href="sesiones.html">
-                        <input class="boton-menu-sesiones" type="submit" value="Sesiones">
-                    </a>
-                </li>
-                <li class="link3">
-                    <a href="festival.html">
-                        <input class="boton-menu-festival" type="submit" value="Festival">
-                    </a>
-                </li>
-                <li class="link4">
-                    <input class="boton-menu-contacto" type="submit" value="Contacto">
-                </li>
-            </ul>
-        </div>
-        <img class="linea-divisoria-1-white" src="assets/img/linea_divisoria_2px_white.png">
-    </div>
-    <div class="barra-menu">
-        <a href="festival.html">
-            <img class="festival-menu" src="assets/img/festival.png">
+        <button id="tutorial" onclick="tutorial()">TUTORIAL</button>
+        <a href="menu2.html">
+            <button id="opciones">OPCIONES</button>
         </a>
-        <a href="sesiones.html">
-            <img class="sesiones-menu" src="assets/img/sesiones.png">
-        </a>
-        <img class="contacto-menu" src="assets/img/contacto.png" onclick="llamar()">
-        <img class="linea-divisoria-3-white" src="assets/img/linea_divisoria_2px_white.png">
-        <img class="linea-divisoria-1-black" src="assets/img/linea_divisoria_2px_black.jpg">
-        <img class="linea-divisoria-2-black" src="assets/img/linea_divisoria_2px_black.jpg">
-        <img class="linea-divisoria-vert-menu-1" src="assets/img/linea_divisoria_vert_menu.jpg">
-        <img class="linea-divisoria-vert-menu-2" src="assets/img/linea_divisoria_vert_menu.jpg">
+        <button id="web" onclick="web()">VISTA WEB</button>
+        <button id="salir" onclick="salir()">SALIR</button>
     </div>
-    <div class="carrusel-peliculas">
-        <div class="carrusel-peliculas-anim posicion"></div>
-        <img class="linea-divisoria-4-white" src="assets/img/linea_divisoria_2px_white.png">
-    </div>
-    <div class="noticias">
-        <div class="noticias-general">
-            <div class="noticias-lineas-texto">
-                <img class="noticias-letras" src="assets/img/noticias_letras.png">
-                <img class="linea-divisoria-corta-inicio" src="assets/img/linea_divisoria_corta_inicio.jpg">
-            </div>
-            <div class="noticias-imagenes">
-                <img class="controlnoticias prevnoticias" src="assets/img/boton_noticias_izquierda.jpg">
-                <div class="noticias-slider">
-                    <img src="assets/img/imagen_noticias1.png">
-                    <img src="assets/img/imagen_noticias2.png">
-                    <img src="assets/img/imagen_noticias3.png">
-                    <img src="assets/img/imagen_noticias4.png">
-                </div>
-                <img class="controlnoticias nextnoticias" src="assets/img/boton_noticias_derecha.jpg">
-            </div>
-        </div>
-            
-    </div>
-    <div class="programa">
-        <div class="programa-general">
-            <div class="programa-lineas-texto">
-                <img class="programa-letras" src="assets/img/programa_letras.png">
-                <img class="linea-divisoria-corta-inicio" src="assets/img/linea_divisoria_corta_inicio.jpg">
-                <img class="imagen-cine-fondo" src="assets/img/imagen_cine.jpg">
-            </div>
-            <div class="programa-imagenes">
-                <img class="controlprograma prevprograma" src="assets/img/boton_programa_izquierda.jpg">
-                <div class="programa-slider">
-                    <img src="assets/img/imagen_dia14.png">
-                    <img src="assets/img/imagen_dia15.png">
-                    <img src="assets/img/imagen_dia16.png">
-                </div>
-                <img class="controlprograma nextprograma" src="assets/img/boton_programa_derecha.jpg">
-            </div>
-        </div>
-    </div>
-    <div class="galeria">
-        <div class="galeria-general">
-            <div class="galeria-lineas-texto">
-                <img class="galeria-letras" src="assets/img/galeria_letras.png">
-                <img class="linea-divisoria-corta-inicio" src="assets/img/linea_divisoria_corta_inicio.jpg">
-                <img class="linea-final-pagina-1" src="assets/img/linea_final_pagina_1.jpg">
-                <img class="linea-final-pagina-2" src="assets/img/linea_final_pagina_2.jpg">
-            </div>
-            <div class="galeria-imagenes">
-                <img class="controlgaleria prevgaleria" src="assets/img/boton_galeria_izquierda.jpg">
-                <div class="galeria-slider">
-                    <img src="assets/img/galeria_imagen_1.png">
-                    <img src="assets/img/galeria_imagen_2.png">
-                    <img src="assets/img/galeria_imagen_3.png">
-                    <img src="assets/img/galeria_imagen_4.png">
-                    <img src="assets/img/galeria_imagen_5.png">
-                </div>
-                <img class="controlgaleria nextgaleria" src="assets/img/boton_galeria_derecha.jpg">
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-texto">
-            <img class="texto-legal" src="assets/img/texto_legal.png">
-            <img class="linea-divisoria-2-white" src="assets/img/linea_divisoria_2px_white.png">
-        </div>
-        <div class="footer-logo">
-            <a href="index.html">
-                <img class="logo-footer" src="assets/img/calavera_vacia.png">
-            </a>
-        </div>
-    </div>
-    <script src="assets/js/scriptindex.js"></script>
+
     <script>
-        function llamar(){
-            alert("se manda mensaje");
-            console.log("msg:iniciar=");
+        function tutorial(){
+            console.log("msg:tutorial=tutorial");
+        }
+
+        function web(){
+            console.log("msg:web=web");
+        }
+
+        function salir(){
+            console.log("msg:salir=salir");
         }
     </script>
 </body>
